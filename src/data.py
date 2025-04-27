@@ -12,12 +12,12 @@ def load_data(num_reviews=500) -> list[str]:
     :return: uma lista com as reviews separadas por palavra
     """
 
-    ds = load_dataset("mdb", split = "train")
+    ds = load_dataset("imdb", split = "train")
     tokens_raw = []
     for text in ds["text"][:500]:
-        tokens_raw.append(re.findall(r"[A-Za-z]+[\w^']*|[\w^']*[A-Za-z]+[\w^']*", text.lower()))
+        tokens_raw.extend(re.findall(r"[A-Za-z]+[\w^']*|[\w^']*[A-Za-z]+[\w^']*", text.lower()))
 
-    print(f"{len(tokens_raw)} tokens tokenizados, com {len(set(tokens_raw))} palavras diferentes")
+    print(f"{len(tokens_raw)} tokens tokenizados")
 
     return tokens_raw
 

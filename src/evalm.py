@@ -39,7 +39,10 @@ def plot_sentiment_cluster(w1: np.ndarray, word2idx: dict[str, int]) -> None:
     pos = ["good", "great", "excellent"]
     neg = ["bad", "terrible", "awful"]
 
-    words = [w for w in pos + neg if w in word2idx]
+    words = [w for w in pos + neg if w in word2idx and word2idx[w] < w1.shape[0]]
+    if not words:
+        print("Nenhuma palavra encontrada no embedding.")
+        return
     vecs = np.stack([w1[word2idx[w]] for w in words])
     coordinates = pca_2d(vecs)
     plt.figure(figsize=(6, 6))

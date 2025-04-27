@@ -21,7 +21,7 @@ grad_w1 = grad(loss_batch, 0)
 grad_w2 = grad(loss_batch, 1)
 
 def train_model(pairs: list[tuple[int, int]], vocab_size: int, embedding_dim: int,
-                epochs: int = 10, batch_size: int = 64, lr: float = 1e-3) -> tuple:
+                epochs: int = 50, batch_size: int = 64, lr: float = 1e-3) -> tuple:
     """
     treina o modelo 
 
