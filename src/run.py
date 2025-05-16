@@ -10,12 +10,14 @@ word2idx, idx2word = build_vocab(reviews)
 tokens_idx = encode_data(reviews, word2idx)
 pairs = generate_skip_pairs(tokens_idx, window_size=5)
 
-train_model()
 
-# w1 = np.load("src/weights/w1.npy")
-# w2 = np.load("src/weights/w2.npy")
+# treinamento (descomente a linha abaixo para treinar o modelo do zero)
+# train_model(pairs, vocab_size=len(word2idx), embedding_dim=100)
 
-for w in ["good", "bad", "great", "terrible"]:
+w1 = np.load("src/weights/w1.npy")
+w2 = np.load("src/weights/w2.npy")
+
+for w in ["bad", "terrible"]:
     if w in word2idx:
         print(f"Palavra: {w}")
         print("Vizinhos mais proximos:")

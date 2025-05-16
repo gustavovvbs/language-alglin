@@ -36,8 +36,8 @@ def plot_sentiment_cluster(w1: np.ndarray, word2idx: dict[str, int]) -> None:
     :return: None
     """
 
-    pos = ["good", "great", "excellent"]
-    neg = ["bad", "terrible", "awful"]
+    pos = ["great", "good"]
+    neg = ["terrible", "bad"]
 
     words = [w for w in pos + neg if w in word2idx and word2idx[w] < w1.shape[0]]
     if not words:
